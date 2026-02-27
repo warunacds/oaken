@@ -2,9 +2,10 @@
 
 require "benchmark/ips"
 require "json"
+require "oj"
 require_relative "../lib/oaken"
 
-# Alba setup
+# Alba setup — #serialize with :oj backend returns a JSON string (same as Oaken#to_json)
 require "alba"
 Alba.backend = :oj
 

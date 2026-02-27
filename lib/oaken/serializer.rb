@@ -16,7 +16,8 @@ module Oaken
 
     def nest(serializer_class, object)
       return nil if object.nil?
-      serializer_class.new.serialize(object)
+      @_nest_cache ||= {}
+      (@_nest_cache[serializer_class] ||= serializer_class.new).serialize(object)
     end
 
     def nest_many(serializer_class, collection)
