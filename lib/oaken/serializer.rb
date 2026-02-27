@@ -21,7 +21,8 @@ module Oaken
 
     def nest_many(serializer_class, collection)
       return [] if collection.nil? || collection.empty?
-      collection.map { |item| serializer_class.new.serialize(item) }
+      instance = serializer_class.new
+      collection.map { |item| instance.serialize(item) }
     end
   end
 end
