@@ -57,6 +57,19 @@ end
 
 Both `nest` and `nest_many` return plain Ruby Hashes — not JSON strings — so there is only one `Oj.dump` call at the outermost level. No double-serialization overhead.
 
+## Important: instantiate per request
+
+Always create a new serializer instance per request. Do not store serializer instances in constants or class-level variables — `nest` and `nest_many` cache nested serializer instances on the serializer object, so a shared instance will hold onto those caches indefinitely.
+
+```ruby
+# ✅ Correct — fresh instance per request
+ActivityItemSerializer.new.to_json(item)
+
+# ❌ Dangerous — cache persists across requests
+SERIALIZER = ActivityItemSerializer.new
+SERIALIZER.to_json(item)
+```
+
 ## Benchmarks
 
 Run `bundle exec ruby benchmarks/bench.rb` to compare against Alba and Blueprinter.
