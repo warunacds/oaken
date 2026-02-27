@@ -18,4 +18,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "oj", "~> 3.0"
   spec.add_development_dependency "minitest", "~> 5.0"
   spec.add_development_dependency "rake", "~> 13.0"
+  spec.add_development_dependency "benchmark-ips", "~> 2.0"
+  spec.add_development_dependency "alba", "~> 3.0"
+  spec.add_development_dependency "blueprinter", "~> 1.0"
 end
