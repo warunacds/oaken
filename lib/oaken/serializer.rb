@@ -14,6 +14,8 @@ module Oaken
       end
     end
 
+    # Both nest and nest_many cache serializer instances per class.
+    # Nested serializer subclasses must be stateless (no mutable instance variables).
     def nest(serializer_class, object)
       return nil if object.nil?
       @_nest_cache ||= {}
@@ -21,8 +23,9 @@ module Oaken
     end
 
     def nest_many(serializer_class, collection)
-      return [] if collection.nil? || collection.empty?
-      instance = serializer_class.new
+      return [] if collection.nil?
+      @_nest_cache ||= {}
+      instance = (@_nest_cache[serializer_class] ||= serializer_class.new)
       collection.map { |item| instance.serialize(item) }
     end
   end

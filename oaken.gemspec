@@ -8,11 +8,14 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Waruna"]
   spec.summary       = "High-performance Ruby JSON serializer"
   spec.description   = "Fast JSON serialization using Oj with a simple class-based API"
-  spec.homepage      = "https://github.com/yourusername/oaken"
+  spec.homepage      = "https://github.com/waruna/oaken"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 4.0.0"
 
-  spec.files         = Dir["lib/**/*", "LICENSE", "README.md"]
+  spec.metadata["source_code_uri"] = "https://github.com/waruna/oaken"
+  spec.metadata["rubygems_mfa_required"] = "true"
+
+  spec.files         = Dir["lib/**/*", "LICENSE", "README.md", "Rakefile"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "oj", "~> 3.0"
