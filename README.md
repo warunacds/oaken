@@ -2,6 +2,8 @@
 
 High-performance Ruby JSON serializer. Uses [Oj](https://github.com/ohler55/oj) under the hood. Simple class-based API with no DSL magic — explicit, predictable, and LLM-friendly.
 
+[![Gem Version](https://badge.fury.io/rb/oaken.svg)](https://rubygems.org/gems/oaken)
+
 ## Installation
 
 ```ruby
