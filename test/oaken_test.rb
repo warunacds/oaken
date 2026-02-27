@@ -138,7 +138,6 @@ class OakenTest < Minitest::Test
   # Task 6: NotImplementedError
   def test_raises_not_implemented_error_when_serialize_not_defined
     klass = Class.new(Oaken::Serializer)
-    obj = User.new(1, "Jane", "Doe", "jane@example.com")
-    assert_raises(NotImplementedError) { klass.new.to_json(obj) }
+    assert_raises(NotImplementedError) { klass.new.to_json(Object.new) }
   end
 end
