@@ -2,6 +2,12 @@
 
 module Oaken
   class Serializer
+    attr_reader :context
+
+    def initialize(context: {})
+      @context = context.freeze
+    end
+
     def serialize(object)
       raise NotImplementedError, "#{self.class}#serialize must be implemented"
     end
@@ -19,13 +25,13 @@ module Oaken
     def nest(serializer_class, object)
       return nil if object.nil?
       @_nest_cache ||= {}
-      (@_nest_cache[serializer_class] ||= serializer_class.new).serialize(object)
+      (@_nest_cache[serializer_class] ||= serializer_class.new(context: context)).serialize(object)
     end
 
     def nest_many(serializer_class, collection)
       return [] if collection.nil?
       @_nest_cache ||= {}
-      instance = (@_nest_cache[serializer_class] ||= serializer_class.new)
+      instance = (@_nest_cache[serializer_class] ||= serializer_class.new(context: context))
       collection.map { |item| instance.serialize(item) }
     end
   end

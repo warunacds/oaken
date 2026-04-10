@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Fast JSON serialization using Oj with a simple class-based API"
   spec.homepage      = "https://github.com/warunacds/oaken"
   spec.license       = "MIT"
-  spec.required_ruby_version = ">= 4.0.0"
+  spec.required_ruby_version = ">= 3.1.0"
 
   spec.metadata["source_code_uri"] = "https://github.com/warunacds/oaken"
   spec.metadata["rubygems_mfa_required"] = "true"
